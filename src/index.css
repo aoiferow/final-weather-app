@@ -1,0 +1,7 @@
+body {
+    min-height: 100%;
+    background: rgb(254,255,234);
+    background: linear-gradient(0deg, rgba(254,255,234,1) 0%, rgba(223,243,241,1) 30%, rgba(130,225,255,1) 100%) fixed;
+    text-align: center;
+
+}
