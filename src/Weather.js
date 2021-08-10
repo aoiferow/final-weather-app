@@ -3,26 +3,27 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-    const [ready, setReady] = useState(false);
-    const [weatherData, setWeatherData] = useState({});
-    
+
+    const [weatherData, setWeatherData] = useState({ ready: false });
+
     function handleResponse(response) {
         console.log(response.data);
-       setWeatherData({
-           temperature: response.data.main.temp,
-           tempHigh: response.data.main.temp_max,
-           tempLow: response.data.main.temp_min,
-           wind: response.data.wind.speed,
-           city: response.data.name,
-           humidity: response.data.main.humidity,
-           description: response.data.weather[0].description,
-           iconUrl: "http://openweathermap.org/img/wn/01d@2x.png",
-       })
-       setReady(true);
+        setWeatherData({
+            ready: true,
+            temperature: response.data.main.temp,
+            tempHigh: response.data.main.temp_max,
+            tempLow: response.data.main.temp_min,
+            wind: response.data.wind.speed,
+            city: response.data.name,
+            humidity: response.data.main.humidity,
+            description: response.data.weather[0].description,
+            iconUrl: "http://openweathermap.org/img/wn/01d@2x.png",
+        })
+
     }
 
 
-    if (ready) {
+    if (weatherData.ready) {
         return (
             <div className="Weather">
                 <form className="form-inline">
@@ -68,7 +69,7 @@ export default function Weather() {
                         </ul>
                     </div>
                     <div className="col-4" >
-                        {weatherData.iconUrl}
+                        <img src={weatherData.iconUrl} alt={weatherData.description} />
                     </div>
                     <div className="col-4" >
                         <ul>
