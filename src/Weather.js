@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate.js";
+import WeatherInfo from "./WeatherInfo.js";
 import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props) {
 
     const [weatherData, setWeatherData] = useState({ ready: false });
-
     function handleResponse(response) {
         setWeatherData({
             ready: true,
@@ -42,55 +41,8 @@ export default function Weather(props) {
                         </div>
                     </div>
                 </form>
-                <h1>
-                    {weatherData.city}
-                </h1>
-                <ul>
-                    <li>
-                        <FormattedDate date={weatherData.date} />
-                    </li>
-                    <li className="text-capitalize">
-                        {weatherData.description}
-                    </li>
-                </ul>
-                <div className="row">
-                    <div className="col-4" >
-                        <ul>
-                            <li>
-                                <span className="temperature">
-                                    {Math.round(weatherData.temperature)}
-                                </span>
-                                <span className="units">
+                <WeatherInfo data={weatherData}/> 
 
-                                    <a href="blank">°c</a>
-                                    {/* |<a href="">°f</a> */}
-                                </span>
-                            </li>
-                            <li>
-                                High: {Math.round(weatherData.tempHigh)}°C
-                            </li>
-                            <li>
-                                Low: {Math.round(weatherData.tempLow)}°C
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="col-4" >
-                        <img src={weatherData.iconUrl} alt={weatherData.description} />
-                    </div>
-                    <div className="col-4" >
-                        <ul>
-                            {/* <li>
-                                Precipitation: 7%
-                            </li> */}
-                            <li>
-                                Humidity: {weatherData.humidity}%
-                            </li>
-                            <li>
-                                Wind: {weatherData.wind} km/h
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         )
     }
