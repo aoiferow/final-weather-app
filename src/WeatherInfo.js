@@ -1,5 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherImage from "./WeatherImage";
+import UnitConversion from "./UnitConversion";
 
 
 export default function WeatherInfo(props) {
@@ -19,14 +21,8 @@ export default function WeatherInfo(props) {
                     <div className="col-4" >
                         <ul>
                             <li>
-                                <span className="temperature">
-                                    {Math.round(props.data.temperature)}
-                                </span>
-                                <span className="units">
-
-                                    <a href="blank">°c</a>
-                                    {/* |<a href="">°f</a> */}
-                                </span>
+                                <UnitConversion celsius={props.data.temperature} />
+                                
                             </li>
                             <li>
                                 High: {Math.round(props.data.tempHigh)}°C
@@ -37,13 +33,15 @@ export default function WeatherInfo(props) {
                         </ul>
                     </div>
                     <div className="col-4" >
-                        <img src={props.data.iconUrl} alt={props.data.description} />
+                        <WeatherImage code={props.data.icon} />
                     </div>
                     <div className="col-4" >
                         <ul>
-                            {/* <li>
-                                Precipitation: 7%
-                            </li> */}
+                            <li>
+                            <span className="temperature">
+                                  
+                            </span>  
+                            </li>
                             <li>
                                 Humidity: {props.data.humidity}%
                             </li>
