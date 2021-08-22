@@ -21,7 +21,7 @@ export default function WeatherInfo(props) {
                     <div className="col-4" >
                         <ul>
                             <li>
-                                <UnitConversion celsius={props.data.temperature} />
+                                <UnitConversion celsius={props.data.temperature} high= {props.data.tempHigh} low={props.data.tempLow}/>
                                 
                             </li>
                             <li>
