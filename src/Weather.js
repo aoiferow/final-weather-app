@@ -6,8 +6,8 @@ import "./Weather.css";
 export default function Weather(props) {
     const [city, setCity] = useState(props.defaultCity);
     const [weatherData, setWeatherData] = useState({ ready: false });
+
     function handleResponse(response) {
-       
         setWeatherData({
             ready: true,
             temperature: response.data.main.temp,
@@ -29,6 +29,12 @@ export default function Weather(props) {
         axios.get(apiUrl).then(handleResponse);
     }
 
+    function currentLocation(position) {
+        const apiKey = "aed21243ee272b8cf9bddb7df0466769";
+         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(handleResponse);
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
         search(); 
@@ -36,17 +42,24 @@ export default function Weather(props) {
     function handlyCityChange (event) {
         setCity(event.target.value);
     }
-
+    function handleCurrent (event) {
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(currentLocation);
+        
+    } 
     if (weatherData.ready) {
         return (
             <div className="Weather">
                 <form onSubmit={handleSubmit} className="form-inline">
                     <div className="row">
-                        <div className="col-9">
+                        <div className="col-6">
                             <input type="search" className="form-control" placeholder="Enter a City..." autoFocus="on" onChange={handlyCityChange} />
                         </div>
                         <div className="col-3">
                             <input type="submit" className="btn btn-primary" value="Search" />
+                        </div>
+                        <div className="col-3">
+                            <input type="button" onClick={handleCurrent} className="btn btn-primary" value="Current Location" />
                         </div>
                     </div>
                 </form>

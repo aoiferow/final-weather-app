@@ -19,18 +19,8 @@ export default function WeatherInfo(props) {
                 </ul>
                 <div className="row">
                     <div className="col-4" >
-                        <ul>
-                            <li>
-                                <UnitConversion celsius={props.data.temperature} high= {props.data.tempHigh} low={props.data.tempLow}/>
-                                
-                            </li>
-                            <li>
-                                High: {Math.round(props.data.tempHigh)}°C
-                            </li>
-                            <li>
-                                Low: {Math.round(props.data.tempLow)}°C
-                            </li>
-                        </ul>
+                        <UnitConversion celsius={props.data.temperature} high= {props.data.tempHigh} low={props.data.tempLow}/>
+                        
                     </div>
                     <div className="col-4" >
                         <WeatherImage code={props.data.icon} />
