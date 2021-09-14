@@ -1,6 +1,7 @@
 import React from "react"; 
 import ReactAnimatedWeather from "react-animated-weather"; 
 import WeatherImage from "./WeatherImage";
+import "./DailyForecast.css"
 
 
 export default function DailyForecast () {
@@ -8,34 +9,49 @@ export default function DailyForecast () {
     <div className="DailyForecast" >
         <div className="row">
             <div className="col">
+                <div className="ForecastDay">Sat</div>
                 <WeatherImage code="01d" size={40} />
-            <p>
-                21°c | 17°c
-            </p>
+            <div className="temperatureForecast" >
+                <p>
+               <span className="forecastMax">21°c </span> | <span className="forecastMin">17°c </span>
+                </p>
+            </div> 
             </div>
          <div className="col">
+                <div className="ForecastDay">Sat</div>
                 <WeatherImage code="01d" size={40} />
-            <p>
-                21°c | 17°c
-            </p>
+            <div className="temperatureForecast" >
+                <p>
+               <span className="forecastMax">21°c </span> | <span className="forecastMin">17°c </span>
+                </p>
+            </div> 
             </div>
              <div className="col">
+                 <div className="ForecastDay">Sat</div>
                 <WeatherImage code="01d" size={40} />
-            <p>
-                21°c | 17°c
-            </p>
+            <div className="temperatureForecast" >
+                <p>
+               <span className="forecastMax">21°c </span> | <span className="forecastMin">17°c </span>
+                </p>
+            </div> 
             </div>
              <div className="col">
+                 <div className="ForecastDay">Sat</div>
                 <WeatherImage code="01d" size={40} />
-            <p>
-                21°c | 17°c
-            </p>
+           <div className="temperatureForecast" >
+                <p>
+               <span className="forecastMax">21°c </span> | <span className="forecastMin">17°c </span>
+                </p>
+            </div> 
             </div>
              <div className="col">
+                 <div className="ForecastDay">Sat</div>
                 <WeatherImage code="01d" size={40} />
-            <p>
-                21°c | 17°c
-            </p>
+            <div className="temperatureForecast" >
+                <p>
+               <span className="forecastMax">21°c </span> | <span className="forecastMin">17°c </span>
+                </p>
+            </div> 
             </div>
             
         </div>
