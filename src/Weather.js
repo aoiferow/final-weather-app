@@ -11,6 +11,7 @@ export default function Weather(props) {
     function handleResponse(response) {
         setWeatherData({
             ready: true,
+            coordinates: response.data.coord, 
             temperature: response.data.main.temp,
             tempHigh: response.data.main.temp_max,
             tempLow: response.data.main.temp_min,
@@ -30,11 +31,11 @@ export default function Weather(props) {
         axios.get(apiUrl).then(handleResponse);
     }
 
-    function currentLocation(position) {
-        const apiKey = "aed21243ee272b8cf9bddb7df0466769";
-         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-        axios.get(apiUrl).then(handleResponse);
-    }
+    // function currentLocation(position) {
+    //     const apiKey = "aed21243ee272b8cf9bddb7df0466769";
+    //      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+    //     axios.get(apiUrl).then(handleResponse);
+    // }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -43,11 +44,11 @@ export default function Weather(props) {
     function handlyCityChange (event) {
         setCity(event.target.value);
     }
-    function handleCurrent (event) {
-        event.preventDefault();
-        navigator.geolocation.getCurrentPosition(currentLocation);
+    // function handleCurrent (event) {
+    //     event.preventDefault();
+    //     navigator.geolocation.getCurrentPosition(currentLocation);
         
-    } 
+    // } 
     if (weatherData.ready) {
         return (
             <div className="Weather">
@@ -60,12 +61,13 @@ export default function Weather(props) {
                             <input type="submit" className="btn btn-primary" value="Search" />
                         </div>
                         <div className="col-3">
-                            <input type="button" onClick={handleCurrent} className="btn btn-primary" value="Current Location" />
+                            {/* <input type="button" onClick={handleCurrent} className="btn btn-primary" value="Current Location" /> */}
                         </div>
                     </div>
                 </form>
                 <WeatherInfo data={weatherData}/> 
-                <DailyForecast />
+                <hr />
+                <DailyForecast coordinate={weatherData.coordinates}/>
 
             </div>
         )

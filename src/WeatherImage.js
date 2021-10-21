@@ -16,6 +16,7 @@ export default function WeatherImage(props) {
     "09d": "RAIN",
     "09n": "RAIN",
     "010d": "RAIN",
+    "10d": "RAIN",
     "010n": "RAIN",
     "011d": "RAIN",
     "011n": "RAIN",
@@ -32,7 +33,7 @@ export default function WeatherImage(props) {
       icon= {codeMapping[props.code]}
   color="#2b819e"
   size= {props.size}
-  animate= {false} />
+  animate= {true} />
     ) 
 
 }
